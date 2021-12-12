@@ -1,0 +1,24 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "A Socket IO chatserver",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VigiliusOsloensis/chat.git"
+  },
+  "author": "VO",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VigiliusOsloensis/chat/issues"
+  },
+  "homepage": "https://github.com/VigiliusOsloensis/chat#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0"
+  }
+}
