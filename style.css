@@ -29,9 +29,10 @@ body {
 }
 #form > button { 
     background: #333; 
+    font-size: 42px;
     border: none; 
-    padding: 0 1rem; 
-    margin: 0.25rem; 
+    padding: 0 2rem;
+    margin: 0.4rem; 
     border-radius: 3px; 
     outline: none; 
     color: #fff; 
