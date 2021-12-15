@@ -7,11 +7,7 @@ const io = require('socket.io')(server, {
       origin: '*',
     }
   });
-const port = process.env.PORT || 3000;
-
-var path = require('path');
-app.use(express.static(path.join(__dirname, '/')));
-var i = 0;
+const port = 8080;
 
 io.on('connection', (socket) => {
     console.log("connected");
