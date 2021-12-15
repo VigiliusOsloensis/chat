@@ -1,8 +1,14 @@
-<p>
-    {{ pageName }}
-</p>
-<ul id="messages"></ul>
-<form id="form" action="">
-    <button>Send</button>
-    <input id="input" autocomplete="off" />
-</form>
+<div id="mainPage">
+    <h1>{{ pageName }}</h1>
+    <div id="messages" >
+        <li *ngFor="let message of messageList">
+            {{ message }}
+        </li>  
+    </div>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <button (click)="sendMsg()">Send</button>
+        <input id="input" [(ngModel)]="currentChatMessage" name="chatTextField" autocomplete="off" />
+    </form>
+</div>
+
