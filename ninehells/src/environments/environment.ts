@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'https://infinite-falls-12171.herokuapp.com'
 };
 
 /*
