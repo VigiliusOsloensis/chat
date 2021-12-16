@@ -11,15 +11,27 @@ const port = 8080;
 
 io.on('connection', (socket) => {
     console.log("connected");
-    console.log(socket);
-    socket.on('message', (msg) => {
-        console.log('message ' + msg);
-        io.emit('message', `${socket.id} said ${msg}`);
+    socket.join(socket.id);
+    socket.on('message', ({msg, roomName}, callback) => {
+        console.log('message ' + msg + " roomName: " + roomName);
+        const outgoingMessage = {
+            name: socket.name,
+            id: socket.id,
+            msg
+        };
+        //socket.to(roomName).emit("message", outgoingMessage)
+        const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${socket.id}.svg`
+        io.to(roomName).emit('message', `<img src=${avatar} width='40px' alt='Nobody'/> ${msg}`);
     });
     socket.on('disconnect', () => {
         console.log('disconnected');
     });
+    socket.on('join', (roomName) => {
+        console.log('join: ' + roomName);
+        socket.join(roomName);
+    });
 });
+
 
 server.listen(port, () => {
     console.log(`Socket.IO server running at http://localhost:${port}/`);

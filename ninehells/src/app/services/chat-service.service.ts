@@ -14,11 +14,20 @@ export class ChatServiceService {
 
   constructor() { }
 
-  publishMessage(msg: ChatMessage) {
-    const roomName = "message";
-    this.socket.emit(roomName, msg.message);
+  publishMessage(msg: ChatMessage, callback: Function) {
+    this.socket.emit("message", {msg: msg.message, roomName: msg.room}, callback);
   }
 
+  joinRoom = (roomName: string) => {
+    this.socket.emit('join', roomName);
+  }
+
+  disconnect() {
+    if (this.socket) {
+      this.socket.disconnect();
+    }
+  }
+  
   public getNewMessage = () => {
     this.socket.on('message', (message: string) =>{
       this.message$.next(message);
