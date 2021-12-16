@@ -4,12 +4,12 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server, {
     cors: {
-      origin: ['http://localhost:4200', '*'],
+      origin: '*',
       methods: ["GET", "POST"],
       credentials: true
     }
   });
-const port = process.env.PORT | 8080;
+const port = process.env.PORT || 8080;
 var cors = require('cors');
 app.use(cors());
 
