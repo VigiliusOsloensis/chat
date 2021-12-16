@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: false,
+  apiUrl: 'https://infinite-falls-12171.herokuapp.com'
 };

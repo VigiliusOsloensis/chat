@@ -23,7 +23,6 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("ngOnInit");
     this.sub = this.route.params.subscribe(params => {
       this._pageName = this.capitalise(params["pageName"]);
       console.log(`Page name: ${this._pageName}`);
@@ -31,8 +30,6 @@ export class MainPageComponent implements OnInit {
     this.chatService.joinRoom(this._pageName);
     this.chatService.getNewMessage().subscribe((message: string) => {
       this.messageList.push(message);
-      console.log("received message");
-      console.log(this.messageList);
     })
   }
 
@@ -51,7 +48,6 @@ export class MainPageComponent implements OnInit {
     if(!this.currentChatMessage) {
       return;
     }
-    console.log("sendMsg clicked");
     let msg: ChatMessage = {
       room: this._pageName,
       user: "user",
