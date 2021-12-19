@@ -27,7 +27,7 @@ io.on('connection', (socket) => {
         };
         //socket.to(roomName).emit("message", outgoingMessage)
         const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${socket.id}.svg`
-        io.to(roomName).emit('message', `<img src=${avatar} width='40px' alt='Nobody'/> ${msg}`);
+        io.to(roomName).emit('message', `<img src=${avatar} class="avatar" width='40px' alt='Nobody'/> ${msg}`);
     });
     socket.on('disconnect', () => {
         console.log('disconnected');
