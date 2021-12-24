@@ -13,21 +13,19 @@ const port = process.env.PORT || 8080;
 var cors = require('cors');
 app.use(cors());
 
-
-
 io.on('connection', (socket) => {
     console.log("connected");
     socket.join(socket.id);
     socket.on('message', ({msg, roomName}, callback) => {
         console.log('message ' + msg + " roomName: " + roomName);
         const outgoingMessage = {
-            name: socket.name,
-            id: socket.id,
-            msg
+            room: '',
+            user: socket.id,
+            message: msg,
+            type: "message"
         };
         //socket.to(roomName).emit("message", outgoingMessage)
-        const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${socket.id}.svg`
-        io.to(roomName).emit('message', `<img src=${avatar} class="avatar" width='40px' alt='Nobody'/> ${msg}`);
+        io.to(roomName).emit('message', outgoingMessage);
     });
     socket.on('disconnect', () => {
         console.log('disconnected');
