@@ -16,11 +16,12 @@ app.use(cors());
 io.on('connection', (socket) => {
     console.log("connected");
     socket.join(socket.id);
-    socket.on('message', ({msg, roomName}, callback) => {
+    socket.on('message', ({msg, roomName, usr}, callback) => {
         console.log('message ' + msg + " roomName: " + roomName);
         const outgoingMessage = {
             room: '',
-            user: socket.id,
+            user: usr,
+            uid: socket.id,
             message: msg,
             type: "message"
         };
